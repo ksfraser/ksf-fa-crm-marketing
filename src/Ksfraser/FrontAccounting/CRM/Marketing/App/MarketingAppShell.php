@@ -5,8 +5,7 @@ declare(strict_types=1);
 namespace Ksfraser\FrontAccounting\CRM\Marketing\App;
 
 use ksfraser\FrontAccounting\Common\App\AbstractAppShell;
-use ksfraser\FrontAccounting\Common\Menu\FAModuleMenu;
-use Ksfraser\FrontAccounting\CRM\Marketing\Controller\MarketingTabController;
+use ksfraser\FrontAccounting\Common\App\TabRegistration;
 
 class MarketingAppShell extends AbstractAppShell
 {
@@ -14,17 +13,16 @@ class MarketingAppShell extends AbstractAppShell
     {
         parent::__construct('marketing', 'index.php', 'view', 'marketing_campaigns');
 
-        $this->add_module(_("Marketing"));
-
-        $menu = new FAModuleMenu(
-            'modules/ksf_FA_CRM_Marketing/index.php',
-            'view',
-            ''
-        );
-
-        $menu->addItem('marketing_campaigns', _("Marketing Campaigns"), MENU_INQUIRY)
-             ->registerWithApp($this, 'SA_MARKETING_VIEW');
-
-        $this->add_extensions();
+        $this->registerTab(new TabRegistration(
+            'marketing_campaigns',
+            'Marketing Campaigns',
+            'SA_MARKETING_VIEW',
+            null,
+            10,
+            0,
+            null,
+            null,
+            array()
+        ));
     }
 }
