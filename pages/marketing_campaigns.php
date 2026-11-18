@@ -8,7 +8,7 @@ $path_to_root = '../..';
 require_once($path_to_root . '/includes/session.inc');
 
 if (!function_exists('page_security')) {
-    define('page_security', 'SA_MARKETING_VIEW');
+    define('page_security', 'SA_CRM_MARKETING_VIEW');
 }
 
 $controller = new MarketingTabController(null, array());

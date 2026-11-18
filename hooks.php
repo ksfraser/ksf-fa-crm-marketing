@@ -8,10 +8,10 @@ require_once __DIR__ . '/includes/common.inc';
 require_once __DIR__ . '/includes/events.inc';
 use ksfraser\RelatedTo\DTO\RelatedRecordDto;
 define('SS_ksf_FA_CRM_Marketing', 195 << 8);
-if (!defined('SA_MARKETING_VIEW')) {
-    define('SA_MARKETING_VIEW', SS_ksf_FA_CRM_Marketing | 1);
-    define('SA_MARKETING_MANAGE', SS_ksf_FA_CRM_Marketing | 2);
-    define('SA_MARKETING_ADMIN', SS_ksf_FA_CRM_Marketing | 3);
+if (!defined('SA_CRM_MARKETING_VIEW')) {
+    define('SA_CRM_MARKETING_VIEW', SS_ksf_FA_CRM_Marketing | 1);
+    define('SA_CRM_MARKETING_MANAGE', SS_ksf_FA_CRM_Marketing | 2);
+    define('SA_CRM_MARKETING_ADMIN', SS_ksf_FA_CRM_Marketing | 3);
 }
 class hooks_ksf_FA_CRM_Marketing extends hooks {
     const RESPONDERS = array('RELATED_TO_FIELDS', 'MARKETING_RESOLVE', 'MARKETING_FIELDS', 'MARKETING_LIST');
@@ -21,9 +21,9 @@ class hooks_ksf_FA_CRM_Marketing extends hooks {
     function install_options($app) { }
     function install_access() {
         $security_sections[SS_ksf_FA_CRM_Marketing] = _("Marketing");
-        $security_areas['SA_MARKETING_VIEW'] = array(SA_MARKETING_VIEW, _("View marketing campaigns"));
-        $security_areas['SA_MARKETING_MANAGE'] = array(SA_MARKETING_MANAGE, _("Manage marketing campaigns"));
-        $security_areas['SA_MARKETING_ADMIN'] = array(SA_MARKETING_ADMIN, _("Administer marketing"));
+        $security_areas['SA_CRM_MARKETING_VIEW'] = array(SA_CRM_MARKETING_VIEW, _("View marketing campaigns"));
+        $security_areas['SA_CRM_MARKETING_MANAGE'] = array(SA_CRM_MARKETING_MANAGE, _("Manage marketing campaigns"));
+        $security_areas['SA_CRM_MARKETING_ADMIN'] = array(SA_CRM_MARKETING_ADMIN, _("Administer marketing"));
         return array($security_areas, $security_sections);
     }
     function activate_extension($company, $check_only = true) {
@@ -40,9 +40,9 @@ class hooks_ksf_FA_CRM_Marketing extends hooks {
     public function getModuleConstants(&$data, $opts = null) {
         $data['constants'] = array(
             'SS_ksf_FA_CRM_Marketing' => SS_ksf_FA_CRM_Marketing,
-            'SA_MARKETING_VIEW' => SA_MARKETING_VIEW,
-            'SA_MARKETING_MANAGE' => SA_MARKETING_MANAGE,
-            'SA_MARKETING_ADMIN' => SA_MARKETING_ADMIN,
+            'SA_CRM_MARKETING_VIEW' => SA_CRM_MARKETING_VIEW,
+            'SA_CRM_MARKETING_MANAGE' => SA_CRM_MARKETING_MANAGE,
+            'SA_CRM_MARKETING_ADMIN' => SA_CRM_MARKETING_ADMIN,
         );
         return true;
     }
